@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cer4tig3d7jav"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2vtc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6p6sy"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
+
+[node name="Mario" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_g2vtc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6p6sy")
+animation = &"Walking"
