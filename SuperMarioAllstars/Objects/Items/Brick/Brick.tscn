@@ -1,18 +1,78 @@
-[gd_scene load_steps=3 format=3 uid="uid://botbimpxgr88y"]
+[gd_scene load_steps=8 format=3 uid="uid://botbimpxgr88y"]
 
+[ext_resource type="Script" path="res://Objects/Items/Brick/Brick.cs" id="1_0oc8g"]
 [ext_resource type="Texture2D" uid="uid://4cgjxs5qe5s4" path="res://Objects/Items/Brick/Brick.png" id="1_1flg1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8qfd"]
-size = Vector2(16, 16)
+size = Vector2(17.3595, 19.1246)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_luhyu"]
+size = Vector2(13.3946, 0.341136)
+
+[sub_resource type="Animation" id="Animation_bp7t7"]
+resource_name = "brick_bounce"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BrickSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(8, -8), Vector2(8, -16.1759), Vector2(8, -8)]
+}
+
+[sub_resource type="Animation" id="Animation_g3pt0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BrickSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, -8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ry7a"]
+_data = {
+"RESET": SubResource("Animation_g3pt0"),
+"brick_bounce": SubResource("Animation_bp7t7")
+}
 
 [node name="Brick" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("1_0oc8g")
 
-[node name="Brick" type="Sprite2D" parent="."]
+[node name="BrickSprite" type="Sprite2D" parent="."]
 position = Vector2(8, -8)
 texture = ExtResource("1_1flg1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, -8)
+position = Vector2(8, -8.22379)
+scale = Vector2(0.921687, 0.813216)
 shape = SubResource("RectangleShape2D_w8qfd")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1, 1e-05)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(7.99422, -19616.5)
+scale = Vector2(1.16667, 115007)
+shape = SubResource("RectangleShape2D_luhyu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8ry7a")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="OnCollisionWithMario"]

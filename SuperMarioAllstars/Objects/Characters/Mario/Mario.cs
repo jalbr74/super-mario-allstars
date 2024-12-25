@@ -46,4 +46,9 @@ public partial class Mario : CharacterBody2D
         var gravity = GetGravity();
         return $"Hello, Godot! Gravity is {gravity}.";
     }
+
+    public bool IsBig()
+    {
+        return false;
+    }
 }
