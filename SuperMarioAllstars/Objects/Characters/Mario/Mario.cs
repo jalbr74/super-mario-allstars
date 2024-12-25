@@ -33,7 +33,8 @@ public partial class Mario : CharacterBody2D
         {
             velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
         }
-
+        
+        
         Velocity = velocity;
         MoveAndSlide();
     }

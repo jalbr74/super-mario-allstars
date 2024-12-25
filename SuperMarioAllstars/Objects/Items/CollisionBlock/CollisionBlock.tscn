@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceavwgpp5gdbt"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_npv7y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lt8xo"]
+size = Vector2(16, 16)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_62ig5"]
+
+[node name="CollisionBlock" type="StaticBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_npv7y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_lt8xo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 0.588235)
+position = Vector2(8, 8)
+scale = Vector2(16, 16)
+texture = SubResource("CanvasTexture_62ig5")

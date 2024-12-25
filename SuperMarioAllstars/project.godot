@@ -11,13 +11,26 @@ config_version=5
 [application]
 
 config/name="Super Mario Allstars"
-config/features=PackedStringArray("4.3", "Mobile")
+run/main_scene="res://Levels/WorldOneDashOne/WorldOneDashOne.tscn"
+config/features=PackedStringArray("4.3", "C#", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=896
+window/stretch/mode="viewport"
 
 [dotnet]
 
 project/assembly_name="Super Mario Allstars"
 
+[layer_names]
+
+2d_physics/layer_1="Ground"
+2d_physics/layer_2="Player"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"

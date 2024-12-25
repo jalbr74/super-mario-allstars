@@ -3,14 +3,14 @@ using Godot;
 using Moq;
 using NUnit.Framework;
 
-namespace SuperMarioAllstarsTests;
+namespace SuperMarioAllstarsTests.Objects.Characters.Mario;
 
 public class TestMario
 {
     [Test]
     public void TestOne()
     {
-        var mario = new Mock<Mario>();
+        var mario = new Mock<global::Mario>();
         
         mario.Setup(m => m.Velocity).Returns(new Vector2(1, 2));
         mario.Setup(m => m.GetGravity()).Returns(new Vector2(42, 69));

@@ -1,6 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cer4tig3d7jav"]
+[gd_scene load_steps=8 format=3 uid="uid://cer4tig3d7jav"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2vtc"]
+[ext_resource type="Script" path="res://Objects/Characters/Mario/Mario.cs" id="1_3j6u2"]
+[ext_resource type="Texture2D" uid="uid://b61p3spf0f88t" path="res://Objects/Characters/Mario/Mario_walking.png" id="2_gsqlw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_410d1"]
+atlas = ExtResource("2_gsqlw")
+region = Rect2(0, 0, 15, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmlk4"]
+atlas = ExtResource("2_gsqlw")
+region = Rect2(15, 0, 15, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj7an"]
+atlas = ExtResource("2_gsqlw")
+region = Rect2(30, 0, 15, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6p6sy"]
 animations = [{
@@ -9,17 +22,34 @@ animations = [{
 "name": &"Idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_410d1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmlk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj7an")
+}],
 "loop": true,
 "name": &"Walking",
 "speed": 5.0
 }]
 
-[node name="Mario" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2vtc"]
+radius = 3.0
+height = 14.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_g2vtc")
+[node name="Mario" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_3j6u2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_6p6sy")
 animation = &"Walking"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_g2vtc")
