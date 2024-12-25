@@ -256,14 +256,6 @@ position = Vector2(288, -96)
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Mario"]
 remote_path = NodePath("../../Camera2D")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(288, -96)
-zoom = Vector2(4, 4)
-limit_left = 0
-limit_top = -239
-limit_right = 3328
-limit_bottom = -15
-
 [node name="WorldOneDashOneTemplate" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.392157)
@@ -283,5 +275,13 @@ position = Vector2(352, -80)
 position = Vector2(384, -80)
 
 [node name="QuestionBlocks" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(288, -96)
+zoom = Vector2(5, 5)
+limit_left = 0
+limit_top = -239
+limit_right = 3328
+limit_bottom = -15
 
 [connection signal="body_entered" from="Pit Detectors/Pit Detector" to="." method="OnCollision"]
