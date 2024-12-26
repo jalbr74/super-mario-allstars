@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=3 uid="uid://7sc4ghc85h3n"]
+
+[ext_resource type="Script" path="res://Objects/Items/QuestionBlock/QuestionBlock.cs" id="1_bm4mw"]
+[ext_resource type="Texture2D" uid="uid://cvj850rvj7pr0" path="res://Objects/Items/QuestionBlock/QuestionBlock.png" id="2_ysija"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otgp4"]
+atlas = ExtResource("2_ysija")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epu8k"]
+atlas = ExtResource("2_ysija")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qm5o"]
+atlas = ExtResource("2_ysija")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gmdad"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otgp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epu8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qm5o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8qfd"]
+size = Vector2(17.3595, 19.675)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_luhyu"]
+size = Vector2(13.3946, 0.432308)
+
+[sub_resource type="Animation" id="Animation_g3pt0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, -8)]
+}
+
+[sub_resource type="Animation" id="Animation_d6med"]
+resource_name = "block_bounce"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(8, -8), Vector2(8, -16), Vector2(8, -8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8ry7a"]
+_data = {
+"RESET": SubResource("Animation_g3pt0"),
+"block_bounce": SubResource("Animation_d6med")
+}
+
+[node name="QuestionBlock" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_bm4mw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -8)
+sprite_frames = SubResource("SpriteFrames_gmdad")
+autoplay = "default"
+frame = 2
+frame_progress = 0.808799
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(8, -8)
+scale = Vector2(0.921687, 0.813216)
+shape = SubResource("RectangleShape2D_w8qfd")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1, 1e-05)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(7.99422, 26919.7)
+scale = Vector2(1.16667, 115007)
+shape = SubResource("RectangleShape2D_luhyu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8ry7a")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="OnCollisionWithMario"]

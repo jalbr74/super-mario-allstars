@@ -16,6 +16,7 @@ offset_bottom = 1120.0
 
 [node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 handle_input_locally = false
+canvas_item_default_texture_filter = 0
 size = Vector2i(1280, 1120)
 render_target_update_mode = 4
 
