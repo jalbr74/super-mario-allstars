@@ -8,7 +8,7 @@ public partial class Mario : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        Vector2 velocity = Velocity;
+        var velocity = Velocity;
 
         // Add the gravity.
         if (!IsOnFloor())
@@ -24,7 +24,7 @@ public partial class Mario : CharacterBody2D
 
         // Get the input direction and handle the movement/deceleration.
         // As good practice, you should replace UI actions with custom gameplay actions.
-        Vector2 direction = Input.GetVector("D_Pad_Left", "D_Pad_Right", "D_Pad_Up", "D_Pad_Down");
+        var direction = Input.GetVector("D_Pad_Left", "D_Pad_Right", "D_Pad_Up", "D_Pad_Down");
         if (direction != Vector2.Zero)
         {
             velocity.X = direction.X * Speed;
@@ -38,14 +38,6 @@ public partial class Mario : CharacterBody2D
         MoveAndSlide();
     }
     
-    public string GetMessage()
-    {
-        var velocity = Velocity;
-        
-        var gravity = GetGravity();
-        return $"Hello, Godot! Gravity is {gravity}.";
-    }
-
     public bool IsBig()
     {
         return false;

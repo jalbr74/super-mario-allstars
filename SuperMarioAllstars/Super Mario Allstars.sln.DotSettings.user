@@ -8,6 +8,6 @@
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AStringName_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003F_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FDecompilerCache_003Fdecompiler_003F08f0ea1144634eedbe3a87b9762ef1dd4bd200_003Fee_003F319a9cb2_003FStringName_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=38deb356_002D0c3a_002D4434_002Daa16_002Df8fda9c95939/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="TestOne" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::8A9B37BC-A632-4890-AB71-050E2D29A387::net8.0::SuperMarioAllstarsTests.Objects.Characters.Mario.TestMario.Mario_should_face_and_move_left_when_the_controller_is_pressed_left&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::8A9B37BC-A632-4890-AB71-050E2D29A387::net8.0::SuperMarioAllstarsTests.Objects.Characters.Mario.TestMario&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
