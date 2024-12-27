@@ -7,6 +7,6 @@ public class StringName(string value = "")
         return value;
     }
     
-    public static implicit operator StringName(string from) => new StringName(from);
+    public static implicit operator StringName(string from) => new (from);
     public static implicit operator string?(StringName? from) => from?.ToString();
 }
