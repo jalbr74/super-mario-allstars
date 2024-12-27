@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://7sc4ghc85h3n"]
+[gd_scene load_steps=13 format=3 uid="uid://7sc4ghc85h3n"]
 
 [ext_resource type="Script" path="res://Objects/Items/QuestionBlock/QuestionBlock.cs" id="1_bm4mw"]
 [ext_resource type="Texture2D" uid="uid://cvj850rvj7pr0" path="res://Objects/Items/QuestionBlock/QuestionBlock.png" id="2_ysija"]
+[ext_resource type="Texture2D" uid="uid://i3t8r3dov3hq" path="res://Objects/Items/QuestionBlock/QuestionBlock-spent.png" id="3_knoqi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_otgp4"]
 atlas = ExtResource("2_ysija")
@@ -30,6 +31,14 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_knoqi")
+}],
+"loop": true,
+"name": &"question_block_used",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8qfd"]
@@ -84,8 +93,6 @@ script = ExtResource("1_bm4mw")
 position = Vector2(8, -8)
 sprite_frames = SubResource("SpriteFrames_gmdad")
 autoplay = "default"
-frame = 2
-frame_progress = 0.808799
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

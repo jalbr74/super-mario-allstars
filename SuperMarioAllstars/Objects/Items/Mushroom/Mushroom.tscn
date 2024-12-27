@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://che6t28bv7s4b"]
+
+[ext_resource type="Texture2D" uid="uid://boitqopcbglvr" path="res://Objects/Items/Mushroom/Mushroom.png" id="1_gvm76"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xi6xm"]
+radius = 8.0
+
+[node name="Mushroom" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_gvm76")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_xi6xm")

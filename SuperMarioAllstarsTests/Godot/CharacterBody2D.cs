@@ -2,14 +2,25 @@
 
 public class CharacterBody2D
 {
-    public virtual Vector2 Velocity
+    public virtual Vector2 Velocity { get; set; } = Vector2.Zero;
+    public virtual Vector2 Gravity { get; set; } = Vector2.Zero;
+    public virtual bool OnFloor { get; set; } = false;
+
+    public virtual void _PhysicsProcess(double delta)
     {
-        get => throw new NotImplementedException();
-        set=> throw new NotImplementedException();
+    }
+
+    public virtual Vector2 GetGravity()
+    {
+        return Gravity;
     }
     
-    public virtual void _PhysicsProcess(double delta) => throw new NotImplementedException();
-    public virtual Vector2 GetGravity() => throw new NotImplementedException();
-    public void MoveAndSlide() => throw new NotImplementedException();
-    public bool IsOnFloor() => throw new NotImplementedException();
+    public virtual void MoveAndSlide()
+    {
+    }
+    
+    public virtual bool IsOnFloor()
+    {
+        return OnFloor;
+    }
 }
