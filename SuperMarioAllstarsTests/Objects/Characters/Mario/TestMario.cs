@@ -13,6 +13,12 @@ public class TestMario
     public void Setup()
     {
         _mario = new Mock<global::Mario> { CallBase = true };
+        
+        // Setup gravity by default
+        _mario.Setup(x => x.GetGravity()).Returns(new Vector2(0, 1000));
+        
+        // Since Input is static, it will cause problems if you run multiple tests in parallel.
+        Input.Reset();
     }
     
     [Test]
@@ -59,6 +65,23 @@ public class TestMario
         // Assert
         _mario.Object.Velocity.X.Should().Be(0);
         _mario.Object.Velocity.Y.Should().BeLessThan(0);
+        
+        _mario.Verify(x => x.MoveAndSlide(), Times.Once);
+    }
+
+    [Test]
+    public void Mario_should_keep_falling_when_Button_A_is_pressed_and_is_not_on_the_floor()
+    {
+        // Arrange
+        _mario.Setup(x => x.IsOnFloor()).Returns(false);
+        Input.PressAction("Button_A");
+
+        // Act
+        _mario.Object._PhysicsProcess(0.01f);
+
+        // Assert
+        _mario.Object.Velocity.X.Should().Be(0);
+        _mario.Object.Velocity.Y.Should().BeGreaterThan(0);
         
         _mario.Verify(x => x.MoveAndSlide(), Times.Once);
     }
