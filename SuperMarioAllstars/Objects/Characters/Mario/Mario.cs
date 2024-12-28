@@ -38,7 +38,7 @@ public partial class Mario : CharacterBody2D
         MoveAndSlide();
     }
     
-    public bool IsBig()
+    public virtual bool IsBig()
     {
         return false;
     }
