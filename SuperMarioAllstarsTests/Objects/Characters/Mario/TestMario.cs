@@ -99,6 +99,25 @@ public class TestMario
         // Assert
         _mario.Object.Velocity.X.Should().BeLessThan(0);
         _mario.Object.Velocity.Y.Should().Be(0);
+        _mario.Object.Scale.X.Should().Be(-1);
+        
+        _mario.Verify(x => x.MoveAndSlide(), Times.Once);
+    }
+
+    [Test]
+    public void Mario_should_face_and_move_right_when_the_DPad_is_pressed_right()
+    {
+        // Arrange
+        _mario.Setup(x => x.IsOnFloor()).Returns(true);
+        Input.PressAndHoldAction("D_Pad_Right");
+
+        // Act
+        _mario.Object._PhysicsProcess(0.01f);
+
+        // Assert
+        _mario.Object.Velocity.X.Should().BeGreaterThan(0);
+        _mario.Object.Velocity.Y.Should().Be(0);
+        _mario.Object.Scale.X.Should().Be(1);
         
         _mario.Verify(x => x.MoveAndSlide(), Times.Once);
     }

@@ -21,7 +21,7 @@ public partial class Mario : CharacterBody2D
         {
             velocity.Y = JumpVelocity;
         }
-
+        
         // Get the input direction and handle the movement/deceleration.
         // As good practice, you should replace UI actions with custom gameplay actions.
         var direction = Input.GetVector("D_Pad_Left", "D_Pad_Right", "D_Pad_Up", "D_Pad_Down");
