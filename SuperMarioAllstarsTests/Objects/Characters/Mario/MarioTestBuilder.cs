@@ -51,4 +51,11 @@ public class MarioTestBuilder
         
         return this;
     }
+
+    public MarioTestBuilder WithMainAnimatedSprite(AnimatedSprite2D mainAnimatedSprite)
+    {
+        _mario.Object.MainAnimatedSprite = mainAnimatedSprite;
+        
+        return this;
+    }
 }

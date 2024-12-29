@@ -46,7 +46,7 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_3j6u2")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="MainSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_6p6sy")
 animation = &"Walking"

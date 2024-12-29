@@ -89,6 +89,7 @@ public class TestMario
     {
         // Arrange
         var (mario, marioBehavior) = new MarioTestBuilder()
+            .WithMainAnimatedSprite(new AnimatedSprite2D())
             .WithGravity(new Vector2(0, 1000))
             .WithButtonPressedAndHeld("D_Pad_Left")
             .WithOnFloor(true)
@@ -100,7 +101,7 @@ public class TestMario
         // Assert
         mario.Velocity.X.Should().BeLessThan(0);
         mario.Velocity.Y.Should().Be(0);
-        mario.Scale.X.Should().Be(-1);
+        mario.MainAnimatedSprite.Scale.X.Should().Be(-1); // TODO: Figure out why Mario goes upside down when the scale is set to -1.
         
         marioBehavior.Verify(x => x.MoveAndSlide(), Times.Once);
     }
@@ -110,6 +111,7 @@ public class TestMario
     {
         // Arrange
         var (mario, marioBehavior) = new MarioTestBuilder()
+            .WithMainAnimatedSprite(new AnimatedSprite2D())
             .WithGravity(new Vector2(0, 1000))
             .WithButtonPressedAndHeld("D_Pad_Right")
             .WithOnFloor(true)
@@ -121,7 +123,7 @@ public class TestMario
         // Assert
         mario.Velocity.X.Should().BeGreaterThan(0);
         mario.Velocity.Y.Should().Be(0);
-        mario.Scale.X.Should().Be(1);
+        mario.MainAnimatedSprite.Scale.X.Should().Be(1);
         
         marioBehavior.Verify(x => x.MoveAndSlide(), Times.Once);
     }
