@@ -3,11 +3,11 @@ using Moq;
 
 namespace SuperMarioAllstarsTests.Objects.Characters.Mario;
 
-public class MarioTestBuilder
+public class MarioBuilder
 {
     private readonly Mock<global::Mario> _mario = new() { CallBase = true };
 
-    public MarioTestBuilder()
+    public MarioBuilder()
     {
         Input.Reset();
     }
@@ -17,42 +17,42 @@ public class MarioTestBuilder
         return (_mario.Object, _mario);
     }
 
-    public MarioTestBuilder WithOnFloor(bool isOnFloor)
+    public MarioBuilder WithOnFloor(bool isOnFloor)
     {
         _mario.Setup(x => x.IsOnFloor()).Returns(isOnFloor);
 
         return this;
     }
 
-    public MarioTestBuilder WithGravity(Vector2 gravity)
+    public MarioBuilder WithGravity(Vector2 gravity)
     {
         _mario.Setup(x => x.GetGravity()).Returns(gravity);
         
         return this;
     }
 
-    public MarioTestBuilder WithButtonPressed(string name)
+    public MarioBuilder WithButtonPressed(string name)
     {
         Input.PressAction(name);
 
         return this;
     }
 
-    public MarioTestBuilder WithButtonPressedAndHeld(string name)
+    public MarioBuilder WithButtonPressedAndHeld(string name)
     {
         Input.PressAndHoldAction(name);
 
         return this;
     }
 
-    public MarioTestBuilder WithVelocity(Vector2 velocity)
+    public MarioBuilder WithVelocity(Vector2 velocity)
     {
         _mario.Object.Velocity = velocity;
         
         return this;
     }
 
-    public MarioTestBuilder WithMainAnimatedSprite(AnimatedSprite2D mainAnimatedSprite)
+    public MarioBuilder WithMainAnimatedSprite(AnimatedSprite2D mainAnimatedSprite)
     {
         _mario.Object.MainAnimatedSprite = mainAnimatedSprite;
         

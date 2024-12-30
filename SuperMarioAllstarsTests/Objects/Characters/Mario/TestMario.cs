@@ -11,7 +11,7 @@ public class TestMario
     public void Mario_should_respect_gravity_when_not_on_the_floor() 
     {
         // Arrange
-        var (mario, marioBehavior) = new MarioTestBuilder()
+        var (mario, marioBehavior) = new MarioBuilder()
             .WithGravity(new Vector2(0, 1000))
             .WithOnFloor(false)
             .Build();
@@ -30,7 +30,7 @@ public class TestMario
     public void Mario_should_ignore_gravity_when_on_the_floor() 
     {
         // Arrange
-        var (mario, marioBehavior) = new MarioTestBuilder()
+        var (mario, marioBehavior) = new MarioBuilder()
             .WithGravity(new Vector2(0, 1000))
             .WithOnFloor(true)
             .Build();
@@ -48,7 +48,7 @@ public class TestMario
     public void Mario_should_jump_when_Button_A_is_pressed_and_is_on_the_floor()
     {
         // Arrange
-        var (mario, marioBehavior) = new MarioTestBuilder()
+        var (mario, marioBehavior) = new MarioBuilder()
             .WithGravity(new Vector2(0, 1000))
             .WithButtonPressed("Button_A")
             .WithOnFloor(true)
@@ -68,7 +68,7 @@ public class TestMario
     public void Mario_should_keep_falling_when_Button_A_is_pressed_and_is_not_on_the_floor()
     {
         // Arrange
-        var (mario, marioBehavior) = new MarioTestBuilder()
+        var (mario, marioBehavior) = new MarioBuilder()
             .WithGravity(new Vector2(0, 1000))
             .WithButtonPressed("Button_A")
             .WithOnFloor(false)
@@ -88,7 +88,7 @@ public class TestMario
     public void Mario_should_face_and_move_left_when_the_DPad_is_pressed_left()
     {
         // Arrange
-        var (mario, marioBehavior) = new MarioTestBuilder()
+        var (mario, marioBehavior) = new MarioBuilder()
             .WithMainAnimatedSprite(new AnimatedSprite2D())
             .WithGravity(new Vector2(0, 1000))
             .WithButtonPressedAndHeld("D_Pad_Left")
@@ -110,7 +110,7 @@ public class TestMario
     public void Mario_should_face_and_move_right_when_the_DPad_is_pressed_right()
     {
         // Arrange
-        var (mario, marioBehavior) = new MarioTestBuilder()
+        var (mario, marioBehavior) = new MarioBuilder()
             .WithMainAnimatedSprite(new AnimatedSprite2D())
             .WithGravity(new Vector2(0, 1000))
             .WithButtonPressedAndHeld("D_Pad_Right")
@@ -132,7 +132,7 @@ public class TestMario
     public void Mario_should_slow_down_and_stop_when_the_DPad_is_released()
     {
         // Arrange
-        var (mario, marioBehavior) = new MarioTestBuilder()
+        var (mario, marioBehavior) = new MarioBuilder()
             .WithGravity(new Vector2(0, 1000))
             .WithVelocity(new Vector2(-100, 0))
             .WithOnFloor(true)
